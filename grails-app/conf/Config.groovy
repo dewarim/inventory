@@ -105,6 +105,27 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'inventory.Person
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'inventory.PersonAuthority'
 grails.plugins.springsecurity.authority.className = 'inventory.Authority'
 
+
+grails.views.javascript.library = "jquery"
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'inventory.Person'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'inventory.PersonAuthority'
+grails.plugin.springsecurity.authority.className = 'inventory.Authority'
+grails.plugin.springsecurity.userLookup.passwordPropertyName = 'password'
+grails.plugin.springsecurity.authority.nameField = 'name'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/book/create'
+grails.plugin.springsecurity.logout.afterLogoutUrl = '/book/list'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/assets/**': ['permitAll'],
+        '/':['permitAll']
+]
+grails.plugin.springsecurity.providerNames = [
+        'daoAuthenticationProvider',
+        'anonymousAuthenticationProvider',
+        'rememberMeAuthenticationProvider']
+
+
 // Uncomment and edit the following lines to start using Grails encoding & escaping improvements
 
 /* remove this line 

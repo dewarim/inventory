@@ -2,13 +2,9 @@ package inventory
 
 class Authority {
 
-	String authority
-
-	static mapping = {
-		cache true
-	}
+	String name
 
 	static constraints = {
-		authority blank: false, unique: true
+		name blank: false, unique: true
 	}
 }

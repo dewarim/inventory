@@ -2,9 +2,11 @@ grails.servlet.version = "3.0" // Change depending on target container complianc
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
-grails.project.target.level = 1.7
-grails.project.source.level = 1.7
-//grails.project.war.file = "target/${appName}-${appVersion}.war"
+grails.project.dependency.resolver = "maven"
+grails.project.war.file = "target/${appName}.war"
+grails.project.target.level = 1.8
+grails.project.source.level = 1.8
+grails.reload.enabled = true
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -16,21 +18,11 @@ grails.project.dependency.resolution = {
     checksums true // Whether to verify checksums on resolve
 
     repositories {
-        inherits true // Whether to inherit repository definitions from plugins
-
-        grailsPlugins()
-        grailsHome()
         grailsCentral()
-
         mavenLocal()
         mavenCentral()
-
-        // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
-        //mavenRepo "http://snapshots.repository.codehaus.org"
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
     }
+
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
@@ -39,19 +31,12 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.7.2"
+        runtime ":hibernate:3.6.10.18"
+        build ":tomcat:8.0.14.1"
+
+        runtime ":jquery:1.11.1"
         runtime ":resources:1.1.6"
-        compile(':spring-security-core:1.2.7.3')
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0"
-        //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.4"
+        compile(':spring-security-core:2.0-RC4')
 
-        build ":tomcat:$grailsVersion"
-
-        runtime ":database-migration:1.1"
-
-        compile ':cache:1.0.0'
     }
 }
