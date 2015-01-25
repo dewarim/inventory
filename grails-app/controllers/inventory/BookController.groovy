@@ -1,6 +1,6 @@
 package inventory
 
-import grails.plugins.springsecurity.Secured
+import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
 
@@ -8,10 +8,12 @@ class BookController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def index() {
         redirect(action: "list", params: params)
     }
 
+    @Secured(["IS_AUTHENTICATED_ANONYMOUSLY"])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [bookInstanceList: Book.list(params), bookInstanceTotal: Book.count()]

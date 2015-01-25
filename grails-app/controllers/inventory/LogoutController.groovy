@@ -1,6 +1,6 @@
 package inventory
 
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 class LogoutController {
 

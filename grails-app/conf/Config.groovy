@@ -2,14 +2,13 @@
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
-
-// if (System.properties["${appName}.config.location"]) {
-//    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
-// }
+grails.config.locations = [ "classpath:${appName}-config.properties",
+                             "classpath:${appName}-config.groovy",
+                             "file:${userHome}/.grails/${appName}-config.properties",
+                             "file:${userHome}/.grails/${appName}-config.groovy"]
+if (System.properties["${appName}.config.location"]) {
+    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
+}
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
@@ -52,6 +51,9 @@ grails.enable.native2ascii = true
 grails.spring.bean.packages = []
 // whether to disable processing of multi part requests
 grails.web.disable.multipart=false
+
+// fail if user tries to save object with errors.
+grails.gorm.failOnError = true
 
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
@@ -99,12 +101,6 @@ log4j = {
         debug 'stdout'
     }
 }
-
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'inventory.Person'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'inventory.PersonAuthority'
-grails.plugins.springsecurity.authority.className = 'inventory.Authority'
-
 
 grails.views.javascript.library = "jquery"
 
