@@ -26,7 +26,10 @@ class BookController {
 
     @Secured(["ROLE_USER"])
     def save() {
-        def bookInstance = new Book(params)
+        def bookInstance = new Book(title: params.title, authorName: params.authorName)
+        bookInstance.tags = params.tags ?: "" // cannot put "" in constructor or it becomes null.
+        bookInstance.comment = params.comment ?: ""
+        
         if (!bookInstance.save(flush: true)) {
             render(view: "create", model: [bookInstance: bookInstance])
             return
