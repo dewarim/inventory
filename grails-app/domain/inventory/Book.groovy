@@ -35,7 +35,7 @@ class Book {
 
         if (authorName != book.authorName) return false
         if (comment != book.comment) return false
-        if (id != book.id) return false
+        if (id != book.id) return false // normally I would not include this, but ... I sometimes own two identical books.
         if (tags != book.tags) return false
         if (title != book.title) return false
 
