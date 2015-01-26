@@ -9,7 +9,7 @@ class BootStrap {
     def init = { servletContext ->
         
         if (Person.list().size() > 0){
-            log.debug("already initialized")
+            log.debug("*** already initialized")
             return
         }
         log.debug("*** create person/authority")

@@ -78,7 +78,8 @@ log4j = {
     appenders {
         console name:'stdout', layout:pattern(conversionPattern: '%c %m%n')
     }
-    debug 'inventory'
+    debug 'inventory',
+            'grails.app.conf.BootStrap'
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -109,6 +110,7 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'inventory.Person'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'inventory.PersonAuthority'
 grails.plugin.springsecurity.authority.className = 'inventory.Authority'
 grails.plugin.springsecurity.userLookup.passwordPropertyName = 'password'
+grails.plugin.springsecurity.userLookup.usernamePropertyName = 'username'
 grails.plugin.springsecurity.authority.nameField = 'name'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/book/create'
 grails.plugin.springsecurity.logout.afterLogoutUrl = '/book/list'
