@@ -38,7 +38,8 @@ class BookController {
         flash.message = message(code: 'default.created.message', args: [message(code: 'book.label', default: 'Book'), bookInstance.id])
         redirect(action: "create")
     }
-    
+
+    @Secured(["IS_AUTHENTICATED_ANONYMOUSLY"])
     def show(Long id) {
         def bookInstance = Book.get(id)
         if (!bookInstance) {
