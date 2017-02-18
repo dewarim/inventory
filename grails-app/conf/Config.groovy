@@ -98,8 +98,8 @@ log4j = {
             'grails.app'
 
     debug 'inventory',
-           'grails.app.controllers.inventory',
-           'grails.app.conf.BootStrap'
+            'grails.app.controllers.inventory',
+            'grails.app.conf.BootStrap'
 
     root {
         debug 'stdout'
@@ -118,8 +118,12 @@ grails.plugin.springsecurity.authority.nameField = 'name'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/book/create'
 grails.plugin.springsecurity.logout.afterLogoutUrl = '/book/list'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-        '/assets/**': ['permitAll'],
-        '/'         : ['permitAll']
+        '/assets/**'           : ['permitAll'],
+        '/inventory/assets/**' : ['permitAll'],
+        '/'                    : ['permitAll'],
+        '/inventory/login/auth': ['permitAll'],
+        '/login/auth'          : ['permitAll'],
+        '/error/**'            : ['permitAll'],
 ]
 grails.plugin.springsecurity.providerNames = [
         'daoAuthenticationProvider',
